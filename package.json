@@ -1,0 +1,31 @@
+{
+  "name": "ngrx-actions-helper",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/solshark/ngrx-actions-helper.git"
+  },
+  "homepage": "https://github.com/solshark/ngrx-actions-helper",
+  "version": "0.0.1",
+  "description": "Helper to generate typical actions",
+  "prepublish": "tsc",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc"
+  },
+  "types": "dist/index.d.ts",
+  "author": "Michael Shvets",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/core": "^9.1.2",
+    "@ngrx/store": "^9.1.0",
+    "@types/jest": "^25.2.1",
+    "jest": "^25.4.0",
+    "prettier": "^2.0.4",
+    "rxjs": "^6.5.5",
+    "ts-jest": "^25.4.0",
+    "tslint": "^6.1.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.8.3"
+  }
+}

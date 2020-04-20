@@ -1,0 +1,13 @@
+package-lock.json
+dist
+.angulardoc.json
+.idea
+node_modules
+*.sass
+.prettierignore
+/.gitignore
+/src/app/api/mocks/index.txt
+/build/build.sh
+/src/assets/fonts/
+/src/assets/images/
+/coverage/
