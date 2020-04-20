@@ -1,10 +1,10 @@
-import { ActionCreator, ActionType } from '@ngrx/store'
+import { Action, ActionCreator, ActionType } from '@ngrx/store'
 import { TypedAction } from '@ngrx/store/src/models'
 
 export interface IAPIActionCreator<R, S, F> {
-  request: (r: R) => void
-  success: (s: S) => void
-  failure: (f: F) => void
+  request: (r: R) => Action
+  success: (s: S) => Action
+  failure: (f: F) => Action
 }
 
 export function createAPIAction<R, S, F>(

@@ -1,5 +1,6 @@
 import { createAPIAction } from './api-action'
 import { createAction, props } from '@ngrx/store'
+import { Action } from '@ngrx/store/src/models'
 
 interface RequestDTO {
   itemId: number
@@ -21,7 +22,7 @@ describe('API action creator', () => {
     const request: RequestDTO = { itemId: 3 }
     const response: SuccessDTO = { itemId: 3, body: 'success' }
     const failure: ErrorDTO = { error: 'Not found', itemId: 3 }
-    const result = createAPIAction(endpoint)
+    const result = createAPIAction<RequestDTO, SuccessDTO, ErrorDTO>(endpoint)
 
     const expectedAPIRequestAction = createAction(
       `[API:${endpoint}] request`,
@@ -41,6 +42,7 @@ describe('API action creator', () => {
     expect(result.request(request)).toStrictEqual(
       expectedAPIRequestAction(request)
     )
+
     expect(result.success(response)).toStrictEqual(
       expectedAPISuccessAction(response)
     )

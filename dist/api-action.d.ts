@@ -1,6 +1,7 @@
+import { Action } from '@ngrx/store';
 export interface IAPIActionCreator<R, S, F> {
-    request: (r: R) => void;
-    success: (s: S) => void;
-    failure: (f: F) => void;
+    request: (r: R) => Action;
+    success: (s: S) => Action;
+    failure: (f: F) => Action;
 }
 export declare function createAPIAction<R, S, F>(endpoint: string): IAPIActionCreator<R, S, F>;
