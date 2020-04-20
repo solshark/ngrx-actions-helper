@@ -21,7 +21,7 @@ describe('API action creator', () => {
     const request: RequestDTO = { itemId: 3 }
     const response: SuccessDTO = { itemId: 3, body: 'success' }
     const failure: ErrorDTO = { error: 'Not found', itemId: 3 }
-    const result = createAPIAction(endpoint, request, response, failure)
+    const result = createAPIAction(endpoint)
 
     const expectedAPIRequestAction = createAction(
       `[API:${endpoint}] request`,
@@ -38,8 +38,14 @@ describe('API action creator', () => {
       props<ErrorDTO>()
     )
 
-    expect(result.request()).toStrictEqual(expectedAPIRequestAction(request))
-    expect(result.success()).toStrictEqual(expectedAPISuccessAction(response))
-    expect(result.failure()).toStrictEqual(expectedAPIFailureAction(failure))
+    expect(result.request(request)).toStrictEqual(
+      expectedAPIRequestAction(request)
+    )
+    expect(result.success(response)).toStrictEqual(
+      expectedAPISuccessAction(response)
+    )
+    expect(result.failure(failure)).toStrictEqual(
+      expectedAPIFailureAction(failure)
+    )
   })
 })

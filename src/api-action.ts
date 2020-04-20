@@ -1,25 +1,25 @@
-export interface IAPIActionCreator {
-  request: () => void
-  success: () => void
-  failure: () => void
+import { ActionCreator, ActionType } from '@ngrx/store'
+import { TypedAction } from '@ngrx/store/src/models'
+
+export interface IAPIActionCreator<R, S, F> {
+  request: (r: R) => void
+  success: (s: S) => void
+  failure: (f: F) => void
 }
 
 export function createAPIAction<R, S, F>(
-  endpoint: string,
-  r: R,
-  s: S,
-  f: F
-): IAPIActionCreator {
+  endpoint: string
+): IAPIActionCreator<R, S, F> {
   return {
-    request: () => ({
+    request: (r: R) => ({
       ...r,
       type: `[API:${endpoint}] request`,
     }),
-    success: () => ({
+    success: (s: S) => ({
       ...s,
       type: `[API:${endpoint}] success`,
     }),
-    failure: () => ({
+    failure: (f: F) => ({
       ...f,
       type: `[API:${endpoint}] failure`,
     }),
